@@ -1,0 +1,108 @@
+	
+# Sistema de Clasificación de Empleados
+
+# Este programa determina la categoría laboral según edad y estado civil
+
+
+
+def clasificar_empleado():
+
+    print("--- Sistema de Reclutamiento ---")
+
+
+
+    try:
+
+        # 1. Solicitar y validar la edad
+
+        edad = int(input("Ingrese su edad: "))
+
+
+
+        if edad < 0:
+
+            print("Error: La edad no puede ser negativa.")
+
+            return
+
+
+
+        # Regla para menores de 18 años
+
+        if edad < 18:
+
+            print("Eres menor de edad. No puedes aplicar a este trabajo.")
+
+            return
+
+
+
+        # Regla para mayores de 60 años
+
+        if edad >= 60:
+
+            print("No puedes aplicar al puesto debido a la edad límite establecida.")
+
+            return
+
+
+
+        # 2. Solicitar y validar el estado civil (solo si la edad es válida para el empleo)
+
+        # Usamos .lower() y .strip() para que acepte "Soltero", "SOLTERO" o " soltero "
+
+        estado_civil = input("Ingrese su estado civil (soltero/casado): ").lower().strip()
+
+
+
+        if estado_civil not in ["soltero", "casado", "soltera", "casada"]:
+
+            print("Error: Estado civil no reconocido. Use 'soltero' o 'casado'.")
+
+            return
+
+
+
+        # 3. Clasificación según rangos de edad y estado civil
+
+        
+
+        # Rango: 18 a 29 años
+
+        if 18 <= edad < 30:
+
+            if estado_civil in ["soltero", "soltera"]:
+
+                print("Puedes aplicar al puesto de trabajo en la categoría Jóvenes Profesionales.")
+
+            else:
+
+                print("Puedes aplicar al puesto de trabajo en la categoría Adultos Jóvenes.")
+
+
+
+        # Rango: 30 a 59 años
+
+        elif 30 <= edad < 60:
+
+            if estado_civil in ["soltero", "soltera"]:
+
+                print("Puedes aplicar al puesto de trabajo en la categoría Adultos con Experiencia.")
+
+            else:
+
+                print("Puedes aplicar al puesto de trabajo en la categoría Trabajadores Senior.")
+
+
+
+    except ValueError:
+
+        # Manejo de error si el usuario ingresa letras en la edad
+
+        print("Error: Por favor, ingrese un número válido para la edad.")
+
+
+
+# Ejecutar la función
+
+clasificar_empleado()
